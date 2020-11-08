@@ -57,6 +57,9 @@ function App() {
       <span className='flex text-indigo-600 text-sm justify-end p-2 font-light'>
         * Right click and select to zoom!
       </span>
+      <span className='flex text-indigo-600 text-sm justify-end p-2 font-light'>
+        * Two fingers hold to zoom in mobile!
+      </span>
       <div className='mt-20 p-5  bg-indigo-100'>
         <h3 className='font-semibold text-3xl text-center p-3 text-indigo-800'>
           Collections
