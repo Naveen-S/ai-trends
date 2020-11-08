@@ -8,9 +8,11 @@ import {
   toChanged,
 } from './actions/trendAction';
 import Card from './components/Card/Card';
+import Line from './components/Chart/Line';
 import Dropdown from './components/Dropdown';
 import Header from './components/Header/Header';
-import TrendChart from './components/Trend/TrendChart';
+import withLoader from './components/hoc/withLoader';
+// import TrendChart from './components/Trend/TrendChart';
 import './styles/main.css';
 
 function App() {
@@ -27,7 +29,6 @@ function App() {
     dispatch(fetchSuits());
   }, [dispatch]);
 
-  console.log('re-render ', dataPoints);
   return (
     <div className='App'>
       <Header />
@@ -52,13 +53,7 @@ function App() {
           />
         </div>
       </div>
-      {dataPoints.length > 0 && (
-        <TrendChart
-          type='column'
-          axisX={{ title: 'Dates' }}
-          trendChartData={[...dataPoints]}
-        />
-      )}
+      {dataPoints.length > 0 && <Line dataPoints={[...dataPoints]} />}
       <span className='flex text-indigo-600 text-sm justify-end p-2 font-light'>
         * Right click and select to zoom!
       </span>
@@ -88,7 +83,7 @@ function App() {
         </div>
         <div className='flex justify-end '>
           <button
-            className='bg-indigo-800 text-white p-3 m-2 rounded w-1/12 hover:bg-indigo-600 transition ease-in duration-150'
+            className='bg-indigo-800 text-white p-3 m-2 px-10 rounded  hover:bg-indigo-600 transition ease-in duration-150'
             onClick={() => {
               setShowLess((prevShowLess) => {
                 return !prevShowLess;
@@ -106,4 +101,4 @@ function App() {
   );
 }
 
-export default App;
+export default withLoader(App);

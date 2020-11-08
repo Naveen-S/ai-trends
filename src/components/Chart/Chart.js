@@ -55,13 +55,18 @@ export default class Chart extends Component {
     });
     return subtitles;
   }
-  
+
   toggleDataSeries(e) {
     if (typeof e.dataSeries.visible === 'undefined' || e.dataSeries.visible) {
       e.dataSeries.visible = false;
     } else {
       e.dataSeries.visible = true;
     }
+    this.chart.render();
+  }
+
+  myRerender(data) {
+    this.chartOptions.data = [data];
     this.chart.render();
   }
 

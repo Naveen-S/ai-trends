@@ -6,10 +6,13 @@ import {
   TREND_FROM_TO_REQUEST,
   TREND_FROM_TO_SUCCESS,
 } from '../actions/types';
+import { generateDataPoints } from '../utils/utils_data';
 import { showError } from '../utils/utils_toast';
 
+const initialDataPoints = generateDataPoints(20);
+
 export const trendReducer = (
-  state = { fromTo: [], dataPoints: [], from: '', to: '' },
+  state = { fromTo: [], dataPoints: initialDataPoints, from: '', to: '' },
   action
 ) => {
   switch (action.type) {
@@ -43,14 +46,13 @@ export const trendReducer = (
     }
 
     case TREND_CHANGE_FROM: {
-      console.log(action);
       if (state.to && action.payload > state.to) {
         showError("From can't be after To, duh!");
-        return { ...state, from: '' };
+        return { ...state, from: state.fromTo[0] };
       } else {
         const from = action.payload;
         const to = state.to || state.fromTo[state.fromTo.length - 1];
-        let newDataPoints = [...state.dataPoints].filter((dp) => {
+        let newDataPoints = [...initialDataPoints].filter((dp) => {
           let year = new Date(dp.x).getFullYear();
           if (year >= from && year <= to) {
             return true;
@@ -69,14 +71,11 @@ export const trendReducer = (
     case TREND_CHANGE_TO: {
       if (state.from && action.payload < state.from) {
         showError("To can't be before From, duh!");
-        return { ...state, to: '' };
+        return { ...state, to: state.fromTo[state.fromTo.length - 1] };
       } else {
-        console.log(state.dataPoints);
         const from = state.from || state.fromTo[0];
         const to = action.payload;
-        console.log('from', from);
-        console.log('to ', to);
-        let newDataPoints = [...state.dataPoints].filter((dp) => {
+        let newDataPoints = [...initialDataPoints].filter((dp) => {
           let year = new Date(dp.x).getFullYear();
           if (year >= from && year <= to) {
             return true;
@@ -84,7 +83,6 @@ export const trendReducer = (
             return false;
           }
         });
-        console.log(newDataPoints);
         return {
           ...state,
           to: action.payload,

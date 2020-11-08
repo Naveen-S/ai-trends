@@ -30,8 +30,6 @@ export const fetchDataPoints = () => (dispatch) => {
 };
 
 export const fromChanged = (from) => (dispatch, getState) => {
-  // console.log(getState().trend.dataPoints);
-  console.log(from);
   dispatch({
     type: TREND_CHANGE_FROM,
     payload: from,
@@ -39,8 +37,6 @@ export const fromChanged = (from) => (dispatch, getState) => {
 };
 
 export const toChanged = (to) => (dispatch, getState) => {
-  // console.log(getState().trend.dataPoints);
-  console.log(to);
   dispatch({
     type: TREND_CHANGE_TO,
     payload: to,

@@ -7,24 +7,24 @@ const Header = () => {
       <div className='flex items-center'>
         <img src={Logo} alt='Logo' width='40' className='mr-2' />
         <a
-          href='home'
+          href='/'
           className='inline-block p-2 text-indigo-200 hover:text-indigo-100 transition ease-in duration-150'>
           Home
         </a>
         <a
-          href='suits'
+          href='/'
           className='inline-block p-2 text-indigo-200 hover:text-indigo-100 transition ease-in duration-150'>
           Suits
         </a>
       </div>
       <div className=''>
         <a
-          href='login'
+          href='/'
           className='inline-block p-2 text-indigo-200 hover:text-indigo-100 transition ease-in duration-150'>
           Login
         </a>
         <a
-          href='signup'
+          href='/'
           className='inline-block p-2 text-indigo-200 hover:text-indigo-100 transition ease-in duration-150'>
           Sign Up
         </a>
