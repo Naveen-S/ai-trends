@@ -98,7 +98,7 @@ function App() {
       </div>
 
       <div className='bg-indigo-700 text-indigo-300 text-center p-3 items-cente mt-5'>
-        <p> Copyright &copy; Suits 2020 - Infinity</p>
+        <p> Copyright &copy; Ai TrendZ 2020 - Infinity</p>
       </div>
     </div>
   );
